@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MyWeb</title>
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet" />
+    <link rel="stylesheet" href="newstyle.css">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+  </head>
+  <body>
+    <div class="container">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+    <div class="wrapper">
+  <h2 >Elastic Tabs</h2>
+  <h6>Click on tabs to see them in action</h6>
+  <nav class="tabs">
+    <div class="selector"></div>
+    <a href="#" class="active"><i class="fas fa-burn"></i>Avengers</a><br>
+    <a href="#"><i class="fas fa-bomb"></i>Guardians of The Galaxy</a><br>
+    <a href="#"><i class="fas fa-bolt"></i>Thor</a><br>
+    <a href="#"><i class="fab fa-superpowers"></i>Black Panther</a><br>
+  </nav>
+</div>
+    <script>
+var tabs = $('.tabs');
+var items = $('.tabs').find('a').length;
+var selector = $(".tabs").find(".selector");
+var activeItem = tabs.find('.active');
+var activeWidth = activeItem.innerWidth();
+$(".selector").css({
+  "left": activeItem.position.left + "px",
+  "width": activeWidth + "px"
+});
+
+$(".tabs").on("click","a",function(){
+  $('.tabs a').removeClass("active");
+  $(this).addClass('active');
+  var activeWidth = $(this).innerWidth();
+  var itemPos = $(this).position();
+  $(".selector").css({
+    "left":itemPos.left + "px",
+    "width": activeWidth + "px"
+  });
+});
+function myFunction(x) {
+  x.classList.toggle("change");
+}
+</script>
+  </body>
+</html>
