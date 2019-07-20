@@ -43,27 +43,15 @@
   </div>
 </nav>
 <div class="message"></div>
-  <form class='form-inline align-bottom d-flex align-items-end' >
+  <form class='chat form-inline align-bottom d-flex align-items-end' >
       <input type="text" class="form-control " id="text" placeholder="Type here" name="text">
     <button type="submit" id="submit" class="btn bg-primary">Submit</button>
   </form>
   <form action="action_page.php">
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
-
-  <h2>Modal Login Form</h2>
-
   <button onclick="document.getElementById('id01').style.display='block';document.getElementById('img').style.display='block'" style="width:auto;">Login</button>
 
   <div id="id01" class="modal">
-
-    <form class="modal-content animate" action="/action_page.php">
-      <div class="imgcontainer">
-        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-        <img src="img_avatar2.png" alt="Avatar" id='img' class="avatar">
-      </div>
-
+    <form class="modal-content animate" action="/newuser" method='post'>
       <div class="container">
         <label for="uname"><b>Username</b></label>
         <input type="text" placeholder="Enter Username" name="uname" required>
@@ -90,7 +78,7 @@ function onclk(){
   document.getElementById("img").style.display="none"
 }
 var socket = io.connect();
-$("form").submit(function(e) {
+$("form.chat").submit(function(e) {
   e.preventDefault();
   socket.emit("send message", $(this).find("#text").val(), function() {
     $("form #text").val("");
